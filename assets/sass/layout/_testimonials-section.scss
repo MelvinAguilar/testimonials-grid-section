@@ -1,0 +1,143 @@
+main {
+    max-width: 72.4rem;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-areas: "c1 c1 c2 c5"
+                         "c3 c4 c4 c5";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+
+    grid-gap: 1.5rem 1.95rem;
+}
+
+.testimonial {
+    box-shadow: $theme-box-shadow;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1.9rem;
+
+    transition: $theme-transition;
+
+    &:hover {
+        box-shadow: $theme-box-shadow-hover;
+    }
+
+    &__profile {
+        @include flex(row, flex-start, center);
+    
+        > img {
+            @include size(1.9rem);
+    
+            border: 0.125rem solid $theme-white-color;
+            border-radius: 50%;
+    
+            margin-right: 1rem;
+        }
+    
+        &__name, &__status {
+            font-size: 0.7rem;
+        }
+
+        &__status {
+            opacity: 60%;
+        }
+    }
+
+    &__review {
+        &__title {
+            margin: 1rem 0 0.9rem 0;
+            
+            font-size: 1.2rem;
+            font-weight: 700;
+            
+            letter-spacing: 0.04rem;
+        }
+
+        &__quote {
+            font-size: 0.834rem;
+            line-height: 1.05rem;
+            letter-spacing: 0.002rem;
+            opacity: 70%;
+        }
+    }  
+
+    &#card-1 {
+        grid-area: c1;
+
+        background: $theme-violet-color url(../../assets/images/bg-pattern-quotation.svg) no-repeat right 18% top;
+    }
+
+    &#card-2 {
+        grid-area: c2;
+
+        background-color: $theme-grayish-blue-color;
+    }
+
+    &#card-3 {
+        grid-area: c3;
+
+        background-color: $theme-white-color;
+        color: $theme-blackish-blue-color-alt;
+    }
+
+    &#card-4 {
+        grid-area: c4;
+
+        background-color: $theme-blackish-blue-color-alt;
+    }
+
+    &#card-5 {
+        grid-area: c5;
+
+        background-color: $theme-white-color;
+        color: $theme-blackish-blue-color-alt;
+    }
+
+    // For styling purposes only.
+    &#card-3,
+    &#card-4,
+    &#card-5 {
+        .testimonial__review__quote {
+            margin-top: 1.4rem;
+        }
+
+        .testimonial__profile > img {
+            border-color: lighten($theme-violet-color, 20);
+        }
+    }
+}
+
+@include media-breakpoint-up($screen-rwd, max-width) {
+    main {
+        grid-template-areas: "c1 c1 c2"
+                             "c3 c4 c4"
+                             "c5 c5 c5";
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto auto;
+        height: auto;
+
+        // Remove the margin-top from the styling purposes only.
+        .testimonial { // For the same especificity.
+            &#card-3,
+            &#card-4,
+            &#card-5 {
+                .testimonial__review__quote {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up($screen-md, max-width) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@include media-hover-effect() {
+    .testimonial:hover {
+        box-shadow: $theme-box-shadow-hover;
+    }
+}
