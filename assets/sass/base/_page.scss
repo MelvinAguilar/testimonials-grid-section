@@ -6,6 +6,11 @@ body {
     color: $theme-white-color;
 
     @include flex;
-    width: 100%;
     min-height: 100vh;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: $theme-violet-color dotted 0.188rem;
+  outline-offset: 0.15rem;
 }

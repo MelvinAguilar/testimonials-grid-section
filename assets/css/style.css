@@ -87,8 +87,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   min-height: 100vh;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: hsl(263deg, 55%, 52%) dotted 0.188rem;
+  outline-offset: 0.15rem;
 }
 
 /* Layout */
@@ -103,6 +108,9 @@ main {
 }
 
 .testimonial {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   box-shadow: 0 0.063rem 0.188rem rgba(25, 33, 46, 0.12), 0 0.063rem 0.125rem rgba(25, 33, 46, 0.24);
   border-radius: 0.5rem;
   padding: 1.5rem 1.9rem;
@@ -124,19 +132,23 @@ main {
   border-radius: 50%;
   margin-right: 1rem;
 }
-.testimonial__profile__name, .testimonial__profile__status {
+.testimonial__name {
+  font-weight: 700;
+  line-height: 1.5;
+}
+.testimonial__name, .testimonial__status {
   font-size: 0.7rem;
 }
-.testimonial__profile__status {
+.testimonial__status {
   opacity: 60%;
 }
-.testimonial__review__title {
+.testimonial__title {
   margin: 1rem 0 0.9rem 0;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.04rem;
 }
-.testimonial__review__quote {
+.testimonial__quote {
   font-size: 0.834rem;
   line-height: 1.15rem;
   letter-spacing: 0.002rem;
@@ -164,25 +176,25 @@ main {
   background-color: hsl(0deg, 0%, 100%);
   color: hsl(219deg, 29%, 14%);
 }
-.testimonial#card-3 .testimonial__review__quote, .testimonial#card-4 .testimonial__review__quote, .testimonial#card-5 .testimonial__review__quote {
+.testimonial#card-3 .testimonial__quote, .testimonial#card-4 .testimonial__quote, .testimonial#card-5 .testimonial__quote {
   margin-top: 1.4rem;
 }
 .testimonial#card-3 .testimonial__profile > img, .testimonial#card-4 .testimonial__profile > img, .testimonial#card-5 .testimonial__profile > img {
   border-color: #ae90df;
 }
 
-@media screen and (max-width: 1060px) {
+@media screen and (max-width: 66.25em) {
   main {
     grid-template-areas: "c1 c1 c2" "c3 c4 c4" "c5 c5 c5";
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto auto;
     height: auto;
   }
-  main .testimonial#card-3 .testimonial__review__quote, main .testimonial#card-4 .testimonial__review__quote, main .testimonial#card-5 .testimonial__review__quote {
+  .testimonial#card-3 .testimonial__quote, .testimonial#card-4 .testimonial__quote, .testimonial#card-5 .testimonial__quote {
     margin-top: 0;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 48em) {
   main {
     display: flex;
     flex-direction: column;
